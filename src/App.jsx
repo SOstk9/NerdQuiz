@@ -31,8 +31,8 @@ function App() {
     audio.play().catch(err => console.error("Audio Playback failed:", err));
 
     setTimeout(() => {
-      fadeOutAudio(audio, 11000);
-    }, 16000); // Start fading out after 1 second
+      fadeOutAudio(audio, 8000);
+    }, 59900); // Start fading out after 1 second
   };
 
   const handleAdmin = () => {

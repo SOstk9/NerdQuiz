@@ -185,7 +185,7 @@ function GameBoard() {
 
             {/* Player Scores */}
             <div className="max-w-7xl mx-auto">
-                <h3 className="text-2xl font-semibold mb-4 text-center">Spieler Punkte</h3>
+                <h3 className="text-2xl font-semibold mb-4 text-center">Spielerpunkte</h3>
                 {players.length === 0 ? (
                     <p className="text-center italic text-gray-500">Keine Spieler vorhanden.</p>
                 ) : (
