@@ -29,6 +29,7 @@ function AdminPanel() {
 
     const sendPlayers = () => {
         channel.postMessage({ type: 'SET_PLAYERS', payload: players });
+        ws.current.send(JSON.stringify({ type: 'SET_PLAYERS', payload: players }));
     };
 
     const showQuestion = (question) => {
