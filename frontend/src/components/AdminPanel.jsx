@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import questions from '../data/questions.json';
 
 const channel = new BroadcastChannel('jeopardy');
@@ -12,6 +12,7 @@ function AdminPanel() {
     const [doublePoints, setDoublePoints] = useState(false);
     const [usedQuestions, setUsedQuestions] = useState([]);
     const [boardData, setBoardData] = useState([]);
+    const ws =useRef(null);
 
     const addPlayer = () => {
         if (newPlayer.trim() && !players.some((p) => p.name === newPlayer.trim())) {
@@ -51,6 +52,18 @@ function AdminPanel() {
         setDoublePoints(newValue);
         channel.postMessage({ type: 'TOGGLE_DOUBLE_POINTS', payload: newValue });
     };
+
+    const unlockBuzzer = () => {
+    if (ws.current) {
+        console.log('WebSocket readyState:', ws.current.readyState);
+    }
+    if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+        ws.current.send('UNLOCK_BUZZER');
+        console.log('UNLOCK_BUZZER message sent to server');
+    } else {
+        console.warn('WebSocket connection is not open.');
+    }
+};
 
     const generateBoard = () => {
         const grouped = {};
@@ -94,6 +107,12 @@ function AdminPanel() {
     useEffect(() => {
         setBoardData(generateBoard());
 
+        ws.current = new WebSocket('ws://localhost:8000'); // Adjust the URL as needed
+        ws.current.onopen = () => {
+            console.log('WebSocket connection established');
+        };
+
+    
         const handleMessage = (event) => {
             const { type, payload } = event.data;
 
@@ -238,6 +257,15 @@ function AdminPanel() {
                 </button>
             </div>
 
+            {/*Buzzer freigeben */}
+            <div className="mt-6">
+                <button
+                    onClick={unlockBuzzer}
+                    className="bg-yellow-500 hover:bg-yellow-600 px-6 py-2 rounded text-white font-semibold shadow"
+                >
+                    Buzzer freigeben
+                </button>
+            </div>
             {/* Fragenraster mit Frage + Antwort + Senden-Button */}
             <div className="grid grid-cols-7 gap-4 mt-8">
                 {boardData.map((cat) => (

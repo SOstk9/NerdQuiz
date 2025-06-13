@@ -13,6 +13,7 @@ function GameBoard() {
     const [doublePoints, setDoublePoints] = useState(false);
 
     const audioRef = useRef(null);
+    const buzzerSoundRef = useRef(new Audio('/sounds/buzzer.mp3'));
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
 
@@ -43,7 +44,23 @@ function GameBoard() {
 
     useEffect(() => {
         setBoardData(generateBoard());
+        const ws = new WebSocket('ws://localhost:8000');
+        ws.onmessage = (event) => {
+            console.log('WebSocket message received:', event.data);
+            const data = JSON.parse(event.data);
+            if (data.message === 'BUTTON_PRESSED') {
+                buzzerSoundRef.current.play();
 
+                setVisibleQuestion(null);
+                                setShowTimer(false);
+                                if (audioRef.current) {
+                                    audioRef.current.pause();
+                                    audioRef.current.currentTime = 0;
+                                }
+                                setIsPlaying(false);
+                                setProgress(0);
+                            }  
+        }
         const handleMessage = (event) => {
             const { type, payload } = event.data;
 
@@ -56,14 +73,14 @@ function GameBoard() {
             } 
              else if (type === 'TIMER_OVER') {
             setVisibleQuestion(null);
-                                setShowTimer(false);
-                                if (audioRef.current) {
+            setShowTimer(false);
+            if (audioRef.current) {
                                     audioRef.current.pause();
                                     audioRef.current.currentTime = 0;
                                 }
                                 setIsPlaying(false);
                                 setProgress(0);
-        }else if (type === 'SET_PLAYERS') {
+            }else if (type === 'SET_PLAYERS') {
                 setPlayers(payload);
             } else if (type === 'TOGGLE_DOUBLE_POINTS') {
                 setDoublePoints(payload);
