@@ -53,7 +53,17 @@ function GameBoard() {
                 setShowTimer(true);
                 setIsPlaying(false);
                 setProgress(0);
-            } else if (type === 'SET_PLAYERS') {
+            } 
+             else if (type === 'TIMER_OVER') {
+            setVisibleQuestion(null);
+                                setShowTimer(false);
+                                if (audioRef.current) {
+                                    audioRef.current.pause();
+                                    audioRef.current.currentTime = 0;
+                                }
+                                setIsPlaying(false);
+                                setProgress(0);
+        }else if (type === 'SET_PLAYERS') {
                 setPlayers(payload);
             } else if (type === 'TOGGLE_DOUBLE_POINTS') {
                 setDoublePoints(payload);
@@ -315,7 +325,21 @@ function GameBoard() {
             )}
 
             {/* Timer Overlay */}
-            {showTimer && <TimerOverlay />}
+            {showTimer && (
+    <TimerOverlay
+        onTimeOver={() => {
+            setVisibleQuestion(null);
+            setShowTimer(false);
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+            }
+            setIsPlaying(false);
+            setProgress(0);
+        }}
+    />
+)}
+
         </div>
     );
 }

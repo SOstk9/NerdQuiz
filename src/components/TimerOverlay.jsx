@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-function TimerOverlay() {
+function TimerOverlay({ onTimeOver }) {
     const [timeLeft, setTimeLeft] = useState(30);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0));
+        if (timeLeft === 0) {
+            onTimeOver(); // <- Keine BroadcastChannel-Nutzung hier!
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            setTimeLeft((prev) => prev - 1);
         }, 1000);
-        return () => clearInterval(timer);
-    }, []);
+
+        return () => clearTimeout(timer);
+    }, [timeLeft, onTimeOver]);
 
     return (
         <div className="fixed bottom-4 right-4 z-50">
