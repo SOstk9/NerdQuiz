@@ -13,6 +13,7 @@ function GameBoard() {
     const [players, setPlayers] = useState([]);
     const [buzzerReset, setBuzzerReset] = useState(false);
     const [doublePoints, setDoublePoints] = useState(false);
+const [timeLeft, setTimeLeft] = useState(0);
 
     const audioRef = useRef(null);
     const buzzerSoundRef = useRef(new Audio('/sounds/buzzer.mp3'));
@@ -130,14 +131,24 @@ function GameBoard() {
     }, []);
 
     useEffect(() => {
-        if (playerGuess) {
-            const timer = setTimeout(() => {
-                setPlayerGuess(null);
-            }, 5000); // 5000 ms = 5 Sekunden
+       let countdownInterval;
+    if (playerGuess) {
+        setTimeLeft(5); // Startzeit
 
-            return () => clearTimeout(timer);
-        }
-    }, [playerGuess]);
+        countdownInterval = setInterval(() => {
+            setTimeLeft((prev) => {
+                if (prev <= 1) {
+                    clearInterval(countdownInterval);
+                    setPlayerGuess(null);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
+    }
+
+    return () => clearInterval(countdownInterval);
+}, [playerGuess]);
 
     // Update progress as audio plays
     useEffect(() => {
@@ -230,7 +241,7 @@ function GameBoard() {
                 </div>
                 {buzzerReset && (
     <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50">
-        🔔 Buzzer wurde zurückgesetzt!
+        Buzzer wurde zurückgesetzt!
     </div>
 )}
             </main>
@@ -379,6 +390,7 @@ function GameBoard() {
                         <h2 id="guess-title" className="text-3xl font-bold tracking-wide mb-4">
                             {playerGuess}, du bist dran!
                         </h2>
+                        <p className="text-lg font-medium text-gray-300">{timeLeft} Sekunde{timeLeft !== 1 ? 'n' : ''} verbleibend</p>
                         <button
                             className="mt-6 px-6 py-3 bg-red-600 rounded hover:bg-red-700 text-white font-semibold"
                             onClick={() => {
