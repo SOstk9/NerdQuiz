@@ -46,7 +46,7 @@ function AdminPanel() {
         setPlayers(updated);
         channel.postMessage({ type: 'SET_PLAYERS', payload: updated });
     };
-
+    
     const toggleDoublePoints = () => {
         const newValue = !doublePoints;
         setDoublePoints(newValue);
@@ -59,6 +59,7 @@ function AdminPanel() {
     }
     if (ws.current && ws.current.readyState === WebSocket.OPEN) {
         ws.current.send('UNLOCK_BUZZER');
+        channel.postMessage({ type: 'UNLOCK_BUZZER', payload: true });
         console.log('UNLOCK_BUZZER message sent to server');
     } else {
         console.warn('WebSocket connection is not open.');

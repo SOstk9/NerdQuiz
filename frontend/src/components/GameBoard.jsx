@@ -8,8 +8,10 @@ function GameBoard() {
     const [boardData, setBoardData] = useState([]);
     const [usedQuestions, setUsedQuestions] = useState([]);
     const [visibleQuestion, setVisibleQuestion] = useState(null);
+    const [playerGuess, setPlayerGuess] = useState(null);
     const [showTimer, setShowTimer] = useState(false);
     const [players, setPlayers] = useState([]);
+    const [buzzerReset, setBuzzerReset] = useState(false);
     const [doublePoints, setDoublePoints] = useState(false);
 
     const audioRef = useRef(null);
@@ -44,13 +46,14 @@ function GameBoard() {
 
     useEffect(() => {
         setBoardData(generateBoard());
+        
         const ws = new WebSocket('ws://localhost:8000');
         ws.onmessage = (event) => {
             console.log('WebSocket message received:', event.data);
             const data = JSON.parse(event.data);
             if (data.message === 'BUTTON_PRESSED') {
                 buzzerSoundRef.current.play();
-
+                setPlayerGuess(data.spieler);
                 setVisibleQuestion(null);
                                 setShowTimer(false);
                                 if (audioRef.current) {
@@ -65,6 +68,8 @@ function GameBoard() {
             const { type, payload } = event.data;
 
             if (type === 'SHOW_QUESTION') {
+ 
+
                 setVisibleQuestion(payload);
                 setUsedQuestions((prev) => [...prev, payload.id]);
                 setShowTimer(true);
@@ -110,6 +115,11 @@ function GameBoard() {
                 setIsPlaying(false);
                 setProgress(0);
             }
+            else if (type === 'UNLOCK_BUZZER') {
+    setBuzzerReset(payload);
+    // Optional: Status nach 5 Sekunden zurücksetzen, damit die Anzeige wieder verschwindet
+    setTimeout(() => setBuzzerReset(false), 5000);
+}
         };
 
         channel.addEventListener('message', handleMessage);
@@ -118,6 +128,16 @@ function GameBoard() {
             channel.removeEventListener('message', handleMessage);
         };
     }, []);
+
+    useEffect(() => {
+        if (playerGuess) {
+            const timer = setTimeout(() => {
+                setPlayerGuess(null);
+            }, 5000); // 5000 ms = 5 Sekunden
+
+            return () => clearTimeout(timer);
+        }
+    }, [playerGuess]);
 
     // Update progress as audio plays
     useEffect(() => {
@@ -208,6 +228,11 @@ function GameBoard() {
                         </div>
                     ))}
                 </div>
+                {buzzerReset && (
+    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50">
+        🔔 Buzzer wurde zurückgesetzt!
+    </div>
+)}
             </main>
 
             {/* Player Scores */}
@@ -333,6 +358,31 @@ function GameBoard() {
                                 }
                                 setIsPlaying(false);
                                 setProgress(0);
+                            }}
+                        >
+                            Schließen
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Player Guess Overlay */}
+            {playerGuess &&(
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-6 z-50"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="guess-title"
+                >
+                  
+                    <div className="bg-gray-900 rounded-lg max-w-md w-full p-8 shadow-xl space-y-6 text-center">
+                        <h2 id="guess-title" className="text-3xl font-bold tracking-wide mb-4">
+                            {playerGuess}, du bist dran!
+                        </h2>
+                        <button
+                            className="mt-6 px-6 py-3 bg-red-600 rounded hover:bg-red-700 text-white font-semibold"
+                            onClick={() => {
+                                setPlayerGuess(null);
                             }}
                         >
                             Schließen
