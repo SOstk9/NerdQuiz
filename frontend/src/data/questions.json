@@ -1,714 +1,278 @@
 [
   {
     "id": "1",
-    "category": "Wissenschaft",
+    "category": "Es war einmal...",
     "points": 100,
-    "question": "Was ist die chemische Formel von Wasser?",
-    "answer": "H2O"
+    "question": "Mit welcher Floskel hören viele Märchen auf?",
+    "answer": "Und wenn sie nicht gestorben sind, dann leben sie noch heute."
+   
   },
   {
     "id": "2",
-    "category": "Wissenschaft",
+    "category": "Es war einmal...",
     "points": 200,
-    "question": "Wie viele Planeten hat unser Sonnensystem?",
-    "answer": "8"
+    "question": "Welche Figur hat eine rote Kopfbedeckung und wird im Wald von einem Wolf angesprochen?",
+    "answer": "Rotkäppchen"
   },
   {
     "id": "3",
-    "category": "Wissenschaft",
+    "category": "Es war einmal...",
     "points": 400,
-    "question": "Was ist Newtons zweites Gesetz?",
-    "answer": "F = m * a"
+    "question": "Welche Tiere gehören zu den Bremer Stadtmusikanten?",
+    "answer": "Esel, Hund, Katze, Hahn"
+  
   },
   {
-    "id": "4",
-    "category": "Wissenschaft",
+     "id": "4",
+    "category": "Es war einmal...",
     "points": 600,
-    "question": "Was ist der Unterschied zwischen Proton und Neutron?",
-    "answer": "Protonen sind positiv geladen, Neutronen neutral"
+    "question": "Nenne 5 der 7 Zwerge beim Namen (Deutsch oder Englisch)",
+    "answer": "Brummbär/Grumpy, Pimpel/Bashful, Happy, Hatschi/Sneezy, Schlafmütze/Sleepy, Chef/Doc, Seppel/Dopey" 
+
   },
-  {
+  { 
     "id": "5",
-    "category": "Wissenschaft",
+    "category": "Es war einmal...",
     "points": 1000,
-    "question": "Wie lautet die Relativitätstheorie von Einstein?",
-    "answer": "E = mc²"
+    "question": "In Shrek 1 werden viele klassische Märchenfiguren parodiert. Doch welche dieser Figuren ist im Film NICHT in Lord Farquaads Verlies zu sehen? A) Pinocchio B) Die drei kleinen Schweinchen C) Rapunzel D) Rotkäppchen",
+    "answer": "C) Rapunzel"
+
   },
   {
     "id": "6",
-    "category": "Geschichte",
+    "category": "Hitster",
     "points": 100,
-    "question": "In welchem Jahr fiel die Berliner Mauer?",
-    "answer": "1989"
+    "question": "Nenne das Lied und den Interpreten",
+    "answer": "The Beatles - Hey Jude",
+    "sound": "sounds/Songs/HeyJude.mp3"
+
+  
   },
   {
-    "id": "7",
-    "category": "Geschichte",
+      "id": "7",
+    "category": "Hitster",
     "points": 200,
-    "question": "Wer war der erste Bundeskanzler Deutschlands?",
-    "answer": "Konrad Adenauer",
-    "image": "images/guernica.jpg"
+    "question": "Nenne das Lied und den Interpreten",
+    "answer": "Billie Eilish - Bad Guy",
+    "sound": "sounds/Songs/BadGuy.mp3"
+   
+    
   },
   {
-    "id": "8",
-    "category": "Geschichte",
+     "id": "8",
+    "category": "Hitster",
     "points": 400,
-    "question": "Was passierte 1492?",
-    "answer": "Entdeckung Amerikas durch Christoph Kolumbus",
-    "sound": "sounds/brainybounce.mp3"
+    "question": "Nenne das Lied und den Interpreten",
+    "answer": "Led Zeppelin - Kashmir",
+    "sound": "sounds/Songs/Kashmir.mp3"
+
   },
   {
     "id": "9",
-    "category": "Geschichte",
+    "category": "Hitster",
     "points": 600,
-    "question": "Wer war Julius Cäsar?",
-    "answer": "Ein römischer Staatsmann und Feldherr"
+    "question": "Nenne das Lied und den Interpreten",
+    "answer": "Ozzy Osbourne - Dreamer",
+    "sound": "sounds/Songs/Dreamer.mp3"
   },
   {
     "id": "10",
-    "category": "Geschichte",
+    "category": "Hitster",
     "points": 1000,
-    "question": "Was war der Westfälische Frieden?",
-    "answer": "Friedensverträge, die den Dreißigjährigen Krieg beendeten"
+    "question": "Nenne das Lied und den Interpreten",
+    "answer": "Bill Conti - Gonna Fly Now",
+    "sound": "sounds/Songs/GonnaFlyNow.mp3"
   },
   {
     "id": "11",
-    "category": "Geografie",
+    "category": "Press X for Cameo",
     "points": 100,
-    "question": "Was ist die Hauptstadt von Frankreich?",
-    "answer": "Paris"
+    "question": "Aus welchem Film ist dieses Bild?",
+    "answer": "Gandalf und Dumbledore in The Lego Movie",
+    "image": "images/Bilder/GandalfDumbledoreLegoMovie.jpg"
+   
   },
   {
-    "id": "12",
-    "category": "Geografie",
+     "id": "12",
+    "category": "Press X for Cameo",
     "points": 200,
-    "question": "Welcher Fluss fließt durch London?",
-    "answer": "Themse"
+    "question": "Aus welchem Film ist dieses Bild?",
+    "answer": "Sonic in Ralph reichts",
+    "image": "images/Bilder/SonicRalphReichts.jpg"
   },
   {
-    "id": "13",
-    "category": "Geografie",
+      "id": "13",
+    "category": "Press X for Cameo",
     "points": 400,
-    "question": "Welcher Kontinent ist der größte?",
-    "answer": "Asien"
+    "question": "Aus welchem Film ist dieses Bild?",
+    "answer": "Donkey Kong in Pixels",
+    "image": "images/Bilder/PixelsDonkeyKong.webp"
+  
   },
   {
     "id": "14",
-    "category": "Geografie",
+    "category": "Press X for Cameo",
     "points": 600,
-    "question": "Was ist die Hauptstadt von Australien?",
-    "answer": "Canberra"
+    "question": "Aus welchem Film ist dieses Bild?",
+    "answer": "Pac-Man in Tron",
+    "image": "images/Bilder/TronPacman.jpg"
   },
   {
     "id": "15",
-    "category": "Geografie",
+    "category": "Press X for Cameo",
     "points": 1000,
-    "question": "Was ist der Marianengraben?",
-    "answer": "Die tiefste Stelle im Ozean"
+    "question": "Aus welchem Film ist dieses Bild?",
+    "answer": "Space Invaders in E.T.",
+    "image": "images/Bilder/ETSpaceInvaders.webp"
   },
   {
     "id": "16",
-    "category": "Kunst",
+    "category": "Pflanzenkunde",
     "points": 100,
-    "question": "Wer malte die Mona Lisa?",
-    "answer": "Leonardo da Vinci"
+    "question": "Zu welchem Baum gehört dieses Blatt?",
+    "answer": "Ahorn",
+    "image": "images/Bilder/Ahorn.jpg"
   },
   {
     "id": "17",
-    "category": "Kunst",
+    "category": "Pflanzenkunde",
     "points": 200,
-    "question": "Welche Kunstrichtung wird mit Picasso assoziiert?",
-    "answer": "Kubismus"
+    "question": "Zu welchem Baum gehört dieses Blatt?",
+    "answer": "Linde",
+    "image": "images/Bilder/Linde.jpg"
   },
   {
     "id": "18",
-    "category": "Kunst",
+    "category": "Pflanzenkunde",
     "points": 400,
-    "question": "Wie heißt dieses berühmte Gemälde?",
-    "image": "images/guernica.jpg",
-    "answer": "Guernica von Pablo Picasso"
+    "question": "Nenne drei verschiedene Minzarten",
+    "answer": "Pfefferminze, Grüne Minze, Apfelminze, Schokoladenminze, Japanische Minze, Ananasminze, Wasser-Minze, Berg-Minze, Krauseminze, Orangenminze, Zitronenminze"
   },
   {
     "id": "19",
-    "category": "Kunst",
+    "category": "Pflanzenkunde",
     "points": 600,
-    "question": "Was ist Impressionismus?",
-    "answer": "Eine Kunstrichtung, die Licht und Atmosphäre betont"
+    "question": "Von welchem Baum stammt dieses Holz?",
+    "answer": "Buche",
+    "image": "images/Bilder/Buche.jpg"
   },
   {
     "id": "20",
-    "category": "Kunst",
+    "category": "Pflanzenkunde",
     "points": 1000,
-    "question": "Welcher Künstler ist bekannt für Schrei?",
-    "answer": "Edvard Munch"
+    "question": "Wie heißt diese Frucht?",
+    "answer": "Mirabelle",
+    "image": "images/Bilder/Mirabellen.jpg"
   },
   {
     "id": "21",
-    "category": "Technologie",
+    "category": "Filme und Serien",
     "points": 100,
-    "question": "Was bedeutet 'HTML'?",
-    "answer": "HyperText Markup Language"
+    "question": "Welcher Film ist auf Platz 1 der IMDB Top 250? (Stand Juli 2025)",
+    "answer": "Die Verurteiteten (The Shawshank Redemption)"
   },
   {
     "id": "22",
-    "category": "Technologie",
+    "category": "Filme und Serien",
     "points": 200,
-    "question": "Was ist ein Betriebssystem?",
-    "answer": "Eine Software, die die Hardware verwaltet"
+    "question": "Was ist mein Lieblings-Disney-(Pixar-)Film?",
+    "answer": "MonsterAG"
   },
   {
     "id": "23",
-    "category": "Technologie",
+    "category": "Filme und Serien",
     "points": 400,
-    "question": "Was ist ein Algorithmus?",
-    "answer": "Eine Reihe von Anweisungen zur Problemlösung"
+    "question": "SCHÄTZFRAGE: Wie viele Filme hat Pixar seit Gründung bis heute (stand Juli 2025) veröffentlicht?",
+    "answer": "29"
   },
   {
     "id": "24",
-    "category": "Technologie",
+    "category": "Filme und Serien",
     "points": 600,
-    "question": "Was stellt dieses Symbol dar?",
-    "image": "images/bluetooth.png",
-    "answer": "Bluetooth"
+    "question": "Nenne drei Filme oder Serien, in denen dieser Mann mitgespielt hat (keine Sequels):",
+    "answer": "Spider Man, Whiplash, La La Land, Justice League",
+    "image": "images/Bilder/JKSimmons.jpg"
   },
   {
     "id": "25",
-    "category": "Technologie",
+    "category": "Filme und Serien",
     "points": 1000,
-    "question": "Wer erfand das World Wide Web?",
-    "answer": "Tim Berners-Lee"
+    "question": "Welcher Schauspieler spielt in Better Call Saul die Rolle des Mike Ehrmantraut?",
+    "answer": "Jonathan Banks"
   },
   {
     "id": "26",
-    "category": "Film",
+    "category": "Comics",
     "points": 100,
-    "question": "Wer spielte Harry Potter?",
-    "answer": "Daniel Radcliffe"
+    "question": "Wie heißt die geheime Identität von Batman?",
+    "answer": "Bruce Wayne"
   },
   {
     "id": "27",
-    "category": "Film",
+    "category": "Comics",
     "points": 200,
-    "question": "Was ist ein Oscar?",
-    "answer": "Ein Filmpreis der Academy"
+    "question": "Wie heißt er mit richtigem Namen?",
+    "answer": "Wilson Fisk",
+    "image": "images/Bilder/Kingpin.jpg"
   },
   {
     "id": "28",
-    "category": "Film",
+    "category": "Comics",
     "points": 400,
-    "question": "Wer führte Regie bei 'Inception'?",
-    "answer": "Christopher Nolan"
+    "question": "Welche Comic-Künstler gelten als der Schöpfer von Batman?",
+    "answer": "Bob Kane und Bill Finger"
   },
   {
     "id": "29",
-    "category": "Film",
+    "category": "Comics",
     "points": 600,
-    "question": "Was ist CGI?",
-    "answer": "Computer Generated Imagery"
+    "question": "Wie heißt der erste weibliche Superheld in den Marvel-Comics??",
+    "answer": "Susan Storm (Invisible Woman)"
   },
   {
     "id": "30",
-    "category": "Film",
+    "category": "Comics",
     "points": 1000,
-    "question": "Wer war Stanley Kubrick?",
-    "answer": "Ein bekannter Regisseur (2001: Odyssee im Weltraum)"
+    "question": "Was ist das Alter Ego von Al Simmons?",
+    "answer": "Spawn"
   },
   {
     "id": "31",
-    "category": "Literatur",
+    "category": "Kunterbuntes",
     "points": 100,
-    "question": "Wer schrieb 'Faust'?",
-    "answer": "Johann Wolfgang von Goethe"
+    "question": "Wer gilt als Vater der Relativitätstheorie?",
+    "answer": "Albert Einstein"
   },
   {
     "id": "32",
-    "category": "Literatur",
+    "category": "Kunterbuntes",
     "points": 200,
-    "question": "Welcher Autor schrieb '1984'?",
-    "answer": "George Orwell"
+    "question": "Von welchem Spiel ist dieses Cover?",
+    "answer": "Fifa Football 2003",
+    "image": "images/Bilder/FIFA2003.jpg"
   },
   {
     "id": "33",
-    "category": "Literatur",
+    "category": "Kunterbuntes",
     "points": 400,
-    "question": "Was ist ein Sonett?",
-    "answer": "Ein Gedicht mit 14 Verszeilen"
+    "question": "In welchem Jahr wurde das erste The Legend of Zelda-Spiel veröffentlicht?",
+    "answer": "1986 in Japan, 1987 im Rest der Welt"
   },
   {
     "id": "34",
-    "category": "Literatur",
+    "category": "Kunterbuntes",
     "points": 600,
-    "question": "Was ist der Unterschied zwischen Prosa und Lyrik?",
-    "answer": "Prosa ist Fließtext, Lyrik ist Gedichtform"
+    "question": "Wer ist das?",
+    "answer": "Kinn Crimson aus Cosmo & Wanda",	
+    "image": "images/Bilder/KinnCrimson.jpg"
   },
   {
-    "id": "35",
-    "category": "Literatur",
+     "id": "35",
+    "category": "Kunterbuntes",
     "points": 1000,
-    "question": "Wer war Franz Kafka?",
-    "answer": "Ein deutschsprachiger Schriftsteller aus Prag"
-  },
-  {
-    "id": "36",
-    "category": "Musik",
-    "points": 100,
-    "question": "Wer sang 'Thriller'?",
-    "answer": "Michael Jackson"
-  },
-  {
-    "id": "37",
-    "category": "Musik",
-    "points": 200,
-    "question": "Was ist eine Oktave?",
-    "answer": "Der Abstand von acht Tonstufen"
-  },
-  {
-    "id": "38",
-    "category": "Musik",
-    "points": 400,
-    "question": "Was ist ein Dirigent?",
-    "answer": "Jemand, der ein Orchester leitet"
-  },
-  {
-    "id": "39",
-    "category": "Musik",
-    "points": 600,
-    "question": "Was bedeutet Allegro?",
-    "answer": "Ein schnelles Musiktempo"
-  },
-  {
-    "id": "40",
-    "category": "Musik",
-    "points": 1000,
-    "question": "Wer komponierte die 'Mondscheinsonate'?",
-    "answer": "Ludwig van Beethoven"
-  },
-  {
-    "id": "41",
-    "category": "Sport",
-    "points": 100,
-    "question": "Wie viele Spieler hat ein Fußballteam auf dem Feld?",
-    "answer": "11"
-  },
-  {
-    "id": "42",
-    "category": "Sport",
-    "points": 200,
-    "question": "Welches Land gewann die Fußball-WM 2014?",
-    "answer": "Deutschland"
-  },
-  {
-    "id": "43",
-    "category": "Sport",
-    "points": 400,
-    "question": "Was ist ein Triple-Double im Basketball?",
-    "answer": "Zweistellige Werte in drei Kategorien"
-  },
-  {
-    "id": "44",
-    "category": "Sport",
-    "points": 600,
-    "question": "Wie lang ist ein Marathon?",
-    "answer": "42,195 km"
-  },
-  {
-    "id": "45",
-    "category": "Sport",
-    "points": 1000,
-    "question": "Was ist die Tour de France?",
-    "answer": "Ein bekanntes Radrennen durch Frankreich"
-  },
-  {
-    "id": "46",
-    "category": "Natur",
-    "points": 100,
-    "question": "Was ist das größte Landsäugetier?",
-    "answer": "Der Afrikanische Elefant"
-  },
-  {
-    "id": "47",
-    "category": "Natur",
-    "points": 200,
-    "question": "Wie heißt dieses Tier?",
-    "image": "images/koala.jpg",
-    "answer": "Koala"
-  },
-  {
-    "id": "48",
-    "category": "Natur",
-    "points": 400,
-    "question": "Wie viele Beine hat ein Insekt?",
-    "answer": "6"
-  },
-  {
-    "id": "49",
-    "category": "Natur",
-    "points": 600,
-    "question": "Was ist Photosynthese?",
-    "answer": "Ein Prozess, bei dem Pflanzen Licht in Energie umwandeln"
-  },
-  {
-    "id": "50",
-    "category": "Natur",
-    "points": 1000,
-    "question": "Was ist das seltenste Edelmetall der Welt?",
-    "answer": "Rhodium"
-  },
-  {
-    "id": "51",
-    "category": "Technologie",
-    "points": 100,
-    "question": "Was ist ein Browser?",
-    "answer": "Ein Programm zum Anzeigen von Webseiten"
-  },
-  {
-    "id": "52",
-    "category": "Technologie",
-    "points": 200,
-    "question": "Wofür steht 'URL'?",
-    "answer": "Uniform Resource Locator"
-  },
-  {
-    "id": "53",
-    "category": "Technologie",
-    "points": 400,
-    "question": "Was ist ein QR-Code?",
-    "image": "images/qr-code.png",
-    "answer": "Ein maschinenlesbarer 2D-Code"
-  },
-  {
-    "id": "54",
-    "category": "Technologie",
-    "points": 600,
-    "question": "Was ist eine API?",
-    "answer": "Schnittstelle für Software-Kommunikation"
-  },
-  {
-    "id": "55",
-    "category": "Technologie",
-    "points": 1000,
-    "question": "Was ist künstliche Intelligenz?",
-    "answer": "Systeme, die menschenähnlich denken/lernen können"
-  },
-  {
-    "id": "56",
-    "category": "Allgemeinwissen",
-    "points": 100,
-    "question": "Wie viele Kontinente gibt es?",
-    "answer": "7"
-  },
-  {
-    "id": "57",
-    "category": "Allgemeinwissen",
-    "points": 200,
-    "question": "Was ist das Symbol für Gold?",
-    "answer": "Au"
-  },
-  {
-    "id": "58",
-    "category": "Allgemeinwissen",
-    "points": 400,
-    "question": "Was ist der höchste Berg der Erde?",
-    "answer": "Mount Everest"
-  },
-  {
-    "id": "59",
-    "category": "Allgemeinwissen",
-    "points": 600,
-    "question": "Wie heißt der aktuelle Papst (Stand 2024)?",
-    "answer": "Papst Franziskus"
-  },
-  {
-    "id": "60",
-    "category": "Allgemeinwissen",
-    "points": 1000,
-    "question": "Wie viele Zähne hat ein erwachsener Mensch normalerweise?",
-    "answer": "32"
-  },
-  {
-    "id": "61",
-    "category": "Essen & Trinken",
-    "points": 100,
-    "question": "Was ist Sushi?",
-    "answer": "Ein japanisches Gericht mit Reis und rohem Fisch"
-  },
-  {
-    "id": "62",
-    "category": "Essen & Trinken",
-    "points": 200,
-    "question": "Was ist in diesem Bild zu sehen?",
-    "image": "images/pizza.jpg",
-    "answer": "Pizza"
-  },
-  {
-    "id": "63",
-    "category": "Essen & Trinken",
-    "points": 400,
-    "question": "Woraus wird Wein hergestellt?",
-    "answer": "Aus Trauben"
-  },
-  {
-    "id": "64",
-    "category": "Essen & Trinken",
-    "points": 600,
-    "question": "Welches Gewürz ist das teuerste der Welt?",
-    "answer": "Safran"
-  },
-  {
-    "id": "65",
-    "category": "Essen & Trinken",
-    "points": 1000,
-    "question": "Was ist ein Barista?",
-    "answer": "Ein Spezialist für Kaffeezubereitung"
-  },
-  {
-    "id": "66",
-    "category": "Reisen",
-    "points": 100,
-    "question": "In welchem Land liegt Rom?",
-    "answer": "Italien"
-  },
-  {
-    "id": "67",
-    "category": "Reisen",
-    "points": 200,
-    "question": "Welcher Turm ist auf diesem Bild zu sehen?",
-    "image": "images/eiffeltower.jpg",
-    "answer": "Eiffelturm"
-  },
-  {
-    "id": "68",
-    "category": "Reisen",
-    "points": 400,
-    "question": "Was ist eine Interrail-Karte?",
-    "answer": "Eine Zugfahrkarte für mehrere Länder Europas"
-  },
-  {
-    "id": "69",
-    "category": "Reisen",
-    "points": 600,
-    "question": "Wie heißt die Hauptstadt von Kanada?",
-    "answer": "Ottawa"
-  },
-  {
-    "id": "70",
-    "category": "Reisen",
-    "points": 1000,
-    "question": "Was ist Machu Picchu?",
-    "answer": "Eine historische Inka-Stadt in Peru"
-  },
-  {
-    "id": "71",
-    "category": "Mathematik",
-    "points": 100,
-    "question": "Was ist 5 + 3?",
-    "answer": "8"
-  },
-  {
-    "id": "72",
-    "category": "Mathematik",
-    "points": 200,
-    "question": "Was ist die Quadratwurzel von 49?",
-    "answer": "7"
-  },
-  {
-    "id": "73",
-    "category": "Mathematik",
-    "points": 400,
-    "question": "Wie nennt man ein Vieleck mit 8 Seiten?",
-    "answer": "Achteck"
-  },
-  {
-    "id": "74",
-    "category": "Mathematik",
-    "points": 600,
-    "question": "Was ist Pi ungefähr?",
-    "answer": "3,1416"
-  },
-  {
-    "id": "75",
-    "category": "Mathematik",
-    "points": 1000,
-    "question": "Was ist der Satz des Pythagoras?",
-    "answer": "a² + b² = c²"
-  },
-  {
-    "id": "76",
-    "category": "Sprache",
-    "points": 100,
-    "question": "Was ist ein Substantiv?",
-    "answer": "Ein Hauptwort (z. B. Haus, Baum)"
-  },
-  {
-    "id": "77",
-    "category": "Sprache",
-    "points": 200,
-    "question": "Was bedeutet 'bilingual'?",
-    "answer": "Zweisprachig"
-  },
-  {
-    "id": "78",
-    "category": "Sprache",
-    "points": 400,
-    "question": "Wie heißt dieses Satzzeichen: !",
-    "answer": "Ausrufezeichen"
-  },
-  {
-    "id": "79",
-    "category": "Sprache",
-    "points": 600,
-    "question": "Was ist ein Synonym für 'schnell'?",
-    "answer": "Rasch, flink, zügig"
-  },
-  {
-    "id": "80",
-    "category": "Sprache",
-    "points": 1000,
-    "question": "Was bedeutet 'Ironie'?",
-    "answer": "Etwas sagen, aber das Gegenteil meinen"
-  },
-  {
-    "id": "81",
-    "category": "Medien",
-    "points": 100,
-    "question": "Was ist ein Podcast?",
-    "answer": "Eine abonnierbare Audio-Sendung"
-  },
-  {
-    "id": "82",
-    "category": "Medien",
-    "points": 200,
-    "question": "Was ist in diesem Bild dargestellt?",
-    "image": "images/microphone.jpg",
-    "answer": "Mikrofon"
-  },
-  {
-    "id": "83",
-    "category": "Medien",
-    "points": 400,
-    "question": "Was ist ein Redakteur?",
-    "answer": "Jemand, der Texte bearbeitet und veröffentlicht"
-  },
-  {
-    "id": "84",
-    "category": "Medien",
-    "points": 600,
-    "question": "Was ist eine Pressekonferenz?",
-    "answer": "Ein Treffen von Journalisten mit einer Person oder Organisation"
-  },
-  {
-    "id": "85",
-    "category": "Medien",
-    "points": 1000,
-    "question": "Was bedeutet Zensur?",
-    "answer": "Verbot oder Einschränkung von Inhalten"
-  },
-  {
-    "id": "86",
-    "category": "Gesellschaft",
-    "points": 100,
-    "question": "Was ist Demokratie?",
-    "answer": "Eine Staatsform, in der das Volk mitbestimmt"
-  },
-  {
-    "id": "87",
-    "category": "Gesellschaft",
-    "points": 200,
-    "question": "Was ist ein Parlament?",
-    "answer": "Ein gesetzgebendes Organ"
-  },
-  {
-    "id": "88",
-    "category": "Gesellschaft",
-    "points": 400,
-    "question": "Was ist auf diesem Bild zu sehen?",
-    "image": "images/wahlurne.jpg",
-    "answer": "Wahlurne"
-  },
-  {
-    "id": "89",
-    "category": "Gesellschaft",
-    "points": 600,
-    "question": "Was ist Integration?",
-    "answer": "Eingliederung in eine Gesellschaft"
-  },
-  {
-    "id": "90",
-    "category": "Gesellschaft",
-    "points": 1000,
-    "question": "Was ist ein NGO?",
-    "answer": "Eine Nichtregierungsorganisation"
-  },
-  {
-    "id": "91",
-    "category": "Computer",
-    "points": 100,
-    "question": "Was ist eine Maus?",
-    "answer": "Ein Eingabegerät für den Computer"
-  },
-  {
-    "id": "92",
-    "category": "Computer",
-    "points": 200,
-    "question": "Was zeigt dieses Bild?",
-    "image": "images/keyboard.jpg",
-    "answer": "Tastatur"
-  },
-  {
-    "id": "93",
-    "category": "Computer",
-    "points": 400,
-    "question": "Was ist ein Betriebssystem?",
-    "answer": "Software, die den Computer steuert"
-  },
-  {
-    "id": "94",
-    "category": "Computer",
-    "points": 600,
-    "question": "Was ist eine Cloud?",
-    "answer": "Online-Speicherplatz"
-  },
-  {
-    "id": "95",
-    "category": "Computer",
-    "points": 1000,
-    "question": "Was ist ein Algorithmus?",
-    "answer": "Ein Regelwerk zur Lösung von Aufgaben"
-  },
-  {
-    "id": "96",
-    "category": "Wissenschaft",
-    "points": 100,
-    "question": "Was ist ein Atom?",
-    "answer": "Der kleinste Baustein der Materie"
-  },
-  {
-    "id": "97",
-    "category": "Wissenschaft",
-    "points": 200,
-    "question": "Wie sieht ein Molekül aus?",
-    "image": "images/molecule.jpg",
-    "answer": "Eine Ansammlung verbundener Atome"
-  },
-  {
-    "id": "98",
-    "category": "Wissenschaft",
-    "points": 400,
-    "question": "Was ist ein Elektron?",
-    "answer": "Ein negativ geladenes Teilchen"
-  },
-  {
-    "id": "99",
-    "category": "Wissenschaft",
-    "points": 600,
-    "question": "Was ist Gravitation?",
-    "answer": "Anziehungskraft zwischen Massen"
-  },
-  {
-    "id": "100",
-    "category": "Wissenschaft",
-    "points": 1000,
-    "question": "Was ist das Hubble-Teleskop?",
-    "answer": "Ein Weltraumteleskop"
+    "question": "Wer schafft die meisten Nachkommastellen von PI?.",
+    "answer": "3.1415926535 8979323846 2643383279 5028841971 6939937510 5820974944 5923078164 0628620899 8628034825"
+   
   }
+
 ]
