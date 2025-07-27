@@ -26,7 +26,7 @@
      "id": "4",
     "category": "Es war einmal...",
     "points": 600,
-    "question": "Nenne 5 der 7 Zwerge beim Namen (Deutsch oder Englisch)",
+    "question": "SCHREIBFRAGE: Nenne 5 der 7 Zwerge beim Namen (Deutsch oder Englisch)",
     "answer": "Brummbär/Grumpy, Pimpel/Bashful, Happy, Hatschi/Sneezy, Schlafmütze/Sleepy, Chef/Doc, Seppel/Dopey" 
 
   },
@@ -34,7 +34,7 @@
     "id": "5",
     "category": "Es war einmal...",
     "points": 1000,
-    "question": "In Shrek 1 werden viele klassische Märchenfiguren parodiert. Doch welche dieser Figuren ist im Film NICHT in Lord Farquaads Verlies zu sehen? A) Pinocchio B) Die drei kleinen Schweinchen C) Rapunzel D) Rotkäppchen",
+    "question": "In Shrek 1 werden viele klassische Märchenfiguren parodiert. Doch welche ist im Film NICHT zu sehen? A) Pinocchio B) Die drei kleinen Schweinchen C) Rapunzel D) Rotkäppchen",
     "answer": "C) Rapunzel"
 
   },
@@ -43,8 +43,8 @@
     "category": "Hitster",
     "points": 100,
     "question": "Nenne das Lied und den Interpreten",
-    "answer": "The Beatles - Hey Jude",
-    "sound": "sounds/Songs/HeyJude.mp3"
+    "answer": "Billie Eilish - Bad Guy",
+    "sound": "sounds/Songs/BadGuy.mp3"
 
   
   },
@@ -53,8 +53,8 @@
     "category": "Hitster",
     "points": 200,
     "question": "Nenne das Lied und den Interpreten",
-    "answer": "Billie Eilish - Bad Guy",
-    "sound": "sounds/Songs/BadGuy.mp3"
+    "answer": "Counting Crows - Accidentally in Love",
+    "sound": "sounds/Songs/AccidentallyInLove.mp3"
    
     
   },
@@ -87,7 +87,7 @@
     "id": "11",
     "category": "Press X for Cameo",
     "points": 100,
-    "question": "Aus welchem Film ist dieses Bild?",
+    "question": "Aus welchem Film ist dieses Bild und welche beiden Zauberer sind versteckt?",
     "answer": "Gandalf und Dumbledore in The Lego Movie",
     "image": "images/Bilder/GandalfDumbledoreLegoMovie.jpg"
    
@@ -96,7 +96,7 @@
      "id": "12",
     "category": "Press X for Cameo",
     "points": 200,
-    "question": "Aus welchem Film ist dieses Bild?",
+    "question": "Aus welchem Film ist dieses Bild und welcher Charakter ist versteckt?",
     "answer": "Sonic in Ralph reichts",
     "image": "images/Bilder/SonicRalphReichts.jpg"
   },
@@ -104,7 +104,7 @@
       "id": "13",
     "category": "Press X for Cameo",
     "points": 400,
-    "question": "Aus welchem Film ist dieses Bild?",
+    "question": "Aus welchem Film ist dieses Bild und welches Spiel ist versteckt?",
     "answer": "Donkey Kong in Pixels",
     "image": "images/Bilder/PixelsDonkeyKong.webp"
   
@@ -113,7 +113,7 @@
     "id": "14",
     "category": "Press X for Cameo",
     "points": 600,
-    "question": "Aus welchem Film ist dieses Bild?",
+    "question": "Aus welchem Film ist dieses Bild und welches Spiel ist versteckt?",
     "answer": "Pac-Man in Tron",
     "image": "images/Bilder/TronPacman.jpg"
   },
@@ -145,7 +145,7 @@
     "id": "18",
     "category": "Pflanzenkunde",
     "points": 400,
-    "question": "Nenne drei verschiedene Minzarten",
+    "question": "SCHREIBFRAGE: Nenne drei verschiedene Minzarten",
     "answer": "Pfefferminze, Grüne Minze, Apfelminze, Schokoladenminze, Japanische Minze, Ananasminze, Wasser-Minze, Berg-Minze, Krauseminze, Orangenminze, Zitronenminze"
   },
   {
@@ -168,15 +168,15 @@
     "id": "21",
     "category": "Filme und Serien",
     "points": 100,
-    "question": "Welcher Film ist auf Platz 1 der IMDB Top 250? (Stand Juli 2025)",
-    "answer": "Die Verurteiteten (The Shawshank Redemption)"
+    "question": "Was ist mein Lieblings-Disney-(Pixar)-Film?",
+    "answer": "Die Monster AG"
   },
   {
     "id": "22",
     "category": "Filme und Serien",
     "points": 200,
-    "question": "Was ist mein Lieblings-Disney-(Pixar-)Film?",
-    "answer": "MonsterAG"
+    "question": "Welcher Film ist auf Platz 1 der IMDB Top 250? (Stand Juli 2025)",
+    "answer": "The Shawnshank Redemption (Die Verurteilten)"
   },
   {
     "id": "23",
@@ -255,22 +255,23 @@
     "id": "33",
     "category": "Kunterbuntes",
     "points": 400,
-    "question": "In welchem Jahr wurde das erste The Legend of Zelda-Spiel veröffentlicht?",
-    "answer": "1986 in Japan, 1987 im Rest der Welt"
+    "question": "Wer ist das?",
+    "answer": "Sam Dylan",
+    "image": "images/Bilder/samdylan.jpg"
   },
   {
     "id": "34",
     "category": "Kunterbuntes",
     "points": 600,
-    "question": "Wer ist das?",
-    "answer": "Kinn Crimson aus Cosmo & Wanda",	
-    "image": "images/Bilder/KinnCrimson.jpg"
+    "question": "SCHÄTZFRAGE: Thomas Müller ist der Rekordspieler beim FC Bayern München. Wie viele Pflichtspiele hat er für den Verein absolviert?",
+    "answer": "756",	
+    "image": "images/Bilder/ThomasMuller.jpg"
   },
   {
      "id": "35",
     "category": "Kunterbuntes",
     "points": 1000,
-    "question": "Wer schafft die meisten Nachkommastellen von PI?.",
+    "question": "SCHREIBFRAGE: Wer schafft die meisten Nachkommastellen von PI?.",
     "answer": "3.1415926535 8979323846 2643383279 5028841971 6939937510 5820974944 5923078164 0628620899 8628034825"
    
   }
