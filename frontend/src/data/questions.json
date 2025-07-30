@@ -53,8 +53,8 @@
     "category": "Hitster",
     "points": 200,
     "question": "Nenne das Lied und den Interpreten",
-    "answer": "Counting Crows - Accidentally in Love",
-    "sound": "sounds/Songs/AccidentallyInLove.mp3"
+    "answer": "Ozzy Osbourne - Dreamer",
+    "sound": "sounds/Songs/Dreamer.mp3"
    
     
   },
@@ -72,8 +72,8 @@
     "category": "Hitster",
     "points": 600,
     "question": "Nenne das Lied und den Interpreten",
-    "answer": "Ozzy Osbourne - Dreamer",
-    "sound": "sounds/Songs/Dreamer.mp3"
+    "answer": "Counting Crows - Accidentally in Love ",
+    "sound": "sounds/Songs/AccidentallyInLove.mp3"
   },
   {
     "id": "10",
@@ -233,7 +233,7 @@
     "id": "30",
     "category": "Comics",
     "points": 1000,
-    "question": "Was ist das Alter Ego von Al Simmons?",
+    "question": "Wer ist das Alter Ego von Al Simmons?",
     "answer": "Spawn"
   },
   {
