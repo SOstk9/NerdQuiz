@@ -1,11 +1,14 @@
 # NerdQuiz (Anwender-Guide)
 
-## Kurzüberblick
-NerdQuiz ist ein Jeopardy‑ähnliches Quiz mit zwei Ansichten:
-- **Start/Board**: zeigt das Spielfeld und die Fragen.
-- **Admin**: verwaltet Spieler, Punkte und schickt Fragen ans Board.
 
-Optional kannst du einen **USB‑Encoder / Arcade‑Buzzer** verwenden. Dann braucht es zusätzlich den Python‑Client.
+NerdQuiz ist ein Quiz, welches an das Nerdquiz von den Rocketbeans angelehnt ist.
+
+
+## Voraussetzungen
+- am besten 2 Monitore, einen großen für das Board, welches die Spieler sehen und einen für das Adminpanel
+- Arcadebuzzer, oder Tastatur
+
+
 
 ## So startest du alles (lokal)
 Du brauchst drei laufende Prozesse in drei Terminals:
@@ -38,8 +41,3 @@ python backend/main.py
    - Frage wird als Overlay angezeigt
    - Timer läuft
    - Buzzer‑Ereignisse werden angezeigt (falls der Buzzer‑Client läuft)
-
-## Hinweis zum Buzzer
-Der USB‑Encoder liefert Tastendrücke an `backend/main.py`.
-Diese werden per WebSocket an das Board geschickt.
-Ohne laufenden WebSocket‑Server funktionieren Buzzer‑Events nicht.
