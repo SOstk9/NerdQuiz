@@ -11,6 +11,8 @@ function GameBoard() {
     const [playerGuess, setPlayerGuess] = useState(null);
     const [showTimer, setShowTimer] = useState(false);
     const [players, setPlayers] = useState([]);
+    const [awaitingBuzzerAssign, setAwaitingBuzzerAssign] = useState(null);
+    const playersRef = useRef([]);
     const [buzzerReset, setBuzzerReset] = useState(false);
     const [doublePoints, setDoublePoints] = useState(false);
     const [timeLeft, setTimeLeft] = useState(0);
@@ -19,6 +21,8 @@ function GameBoard() {
     const buzzerSoundRef = useRef(new Audio('/sounds/buzzer.mp3'));
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
+    const visibleQuestionRef = useRef(null);
+    const showTimerRef = useRef(false);
 
     const generateBoard = () => {
         const grouped = {};
@@ -46,6 +50,18 @@ function GameBoard() {
     };
 
     useEffect(() => {
+        playersRef.current = players;
+    }, [players]);
+
+    useEffect(() => {
+        visibleQuestionRef.current = visibleQuestion;
+    }, [visibleQuestion]);
+
+    useEffect(() => {
+        showTimerRef.current = showTimer;
+    }, [showTimer]);
+
+    useEffect(() => {
         setBoardData(generateBoard());
 
         const ws = new WebSocket('ws://localhost:8000');
@@ -53,8 +69,13 @@ function GameBoard() {
             console.log('WebSocket message received:', event.data);
             const data = JSON.parse(event.data);
             if (data.message === 'BUTTON_PRESSED') {
+                if (!visibleQuestionRef.current && !showTimerRef.current) {
+                    return;
+                }
+                setAwaitingBuzzerAssign(null);
                 buzzerSoundRef.current.play();
-                setPlayerGuess(data.spieler);
+                const matchingPlayer = playersRef.current.find((p) => p.buzzerKey === data.spieler);
+                setPlayerGuess(matchingPlayer ? matchingPlayer.name : data.spieler);
                 setVisibleQuestion(null);
                 setShowTimer(false);
                 if (audioRef.current) {
@@ -119,8 +140,9 @@ function GameBoard() {
             else if (type === 'UNLOCK_BUZZER') {
                 setBuzzerReset(payload);
 
-
                 setTimeout(() => setBuzzerReset(false), 5000);
+            } else if (type === 'AWAITING_BUZZER_ASSIGN') {
+                setAwaitingBuzzerAssign(payload);
             }
         };
 
@@ -134,7 +156,7 @@ function GameBoard() {
     useEffect(() => {
         let countdownInterval;
         if (playerGuess) {
-            setTimeLeft(5); // Startzeit
+            setTimeLeft(5);
 
             countdownInterval = setInterval(() => {
                 setTimeLeft((prev) => {
@@ -262,13 +284,11 @@ function GameBoard() {
                             >
                                 <div className="flex items-center space-x-2 mb-3">
                                     {joker && (
-                                        <span
-                                            className="text-indigo-400 text-3xl select-none"
-                                            role="img"
-                                            aria-label="Joker"
-                                        >
-                                            🃏
-                                        </span>
+                                        <img
+                                            src="../public/images/joker.png"
+                                            alt="Joker"
+                                            className="w-14 h-14"
+                                        />
                                     )}
                                     <span className="text-xl font-semibold truncate max-w-[100px]">{name}</span>
                                 </div>
@@ -400,6 +420,25 @@ function GameBoard() {
                         >
                             Schließen
                         </button>
+                    </div>
+                </div>
+            )}
+
+            {/* Awaiting Buzzer Assignment Overlay */}
+            {awaitingBuzzerAssign && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6 z-40"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="assign-title"
+                >
+                    <div className="bg-gray-900 rounded-lg max-w-md w-full p-8 shadow-xl space-y-4 text-center">
+                        <h2 id="assign-title" className="text-3xl font-bold tracking-wide">
+                            Buzzer zuordnen
+                        </h2>
+                        <p className="text-lg font-medium text-gray-300">
+                            {awaitingBuzzerAssign} drückt bitte jetzt seinen Buzzer zur Zuordnung.
+                        </p>
                     </div>
                 </div>
             )}

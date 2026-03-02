@@ -11,6 +11,17 @@ NerdQuiz ist ein Quiz, welches an das Nerdquiz von den Rocketbeans angelehnt ist
 
 
 ## So startest du alles (lokal)
+Einmalig vorher:
+
+```bash
+# Frontend-Abhängigkeiten
+cd frontend
+npm install
+
+# Python-Abhängigkeiten
+python -m pip install -r backend/requirements.txt
+```
+
 Du brauchst drei laufende Prozesse in drei Terminals:
 
 1. **WebSocket‑Server**

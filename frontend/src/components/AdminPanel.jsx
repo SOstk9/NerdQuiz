@@ -6,17 +6,22 @@ const channel = new BroadcastChannel('jeopardy');
 function AdminPanel() {
     const [players, setPlayers] = useState([]);
     const [newPlayer, setNewPlayer] = useState('');
+    const [awaitingBuzzerFor, setAwaitingBuzzerFor] = useState(null);
+    const awaitingBuzzerForRef = useRef(null);
     const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [pointInputs, setPointInputs] = useState({});
     const [questionCount, setQuestionCount] = useState(0);
     const [doublePoints, setDoublePoints] = useState(false);
     const [usedQuestions, setUsedQuestions] = useState([]);
     const [boardData, setBoardData] = useState([]);
-    const ws =useRef(null);
+    const ws = useRef(null);
 
     const addPlayer = () => {
         if (newPlayer.trim() && !players.some((p) => p.name === newPlayer.trim())) {
-            const updated = [...players, { name: newPlayer.trim(), points: 0, joker: true }];
+            const updated = [
+                ...players,
+                { name: newPlayer.trim(), points: 0, joker: true, buzzerKey: null },
+            ];
             setPlayers(updated);
             setNewPlayer('');
         }
@@ -25,17 +30,26 @@ function AdminPanel() {
     const removePlayer = (name) => {
         const updated = players.filter((p) => p.name !== name);
         setPlayers(updated);
+        if (awaitingBuzzerFor === name) {
+            setAwaitingBuzzerFor(null);
+            channel.postMessage({ type: 'AWAITING_BUZZER_ASSIGN', payload: null });
+        }
     };
 
     const sendPlayers = () => {
         channel.postMessage({ type: 'SET_PLAYERS', payload: players });
-        ws.current.send(JSON.stringify({ type: 'SET_PLAYERS', payload: players }));
+        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            ws.current.send(JSON.stringify({ type: 'SET_PLAYERS', payload: players }));
+        }
     };
 
     const showQuestion = (question) => {
         setSelectedQuestion(question);
         channel.postMessage({ type: 'SHOW_QUESTION', payload: question });
         channel.postMessage({ type: 'START_TIMER' });
+        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+            ws.current.send(JSON.stringify({ type: 'SHOW_QUESTION', payload: question }));
+        }
         setUsedQuestions((prev) => [...prev, question.id]);
         setQuestionCount((count) => count + 1);
     };
@@ -47,25 +61,31 @@ function AdminPanel() {
         setPlayers(updated);
         channel.postMessage({ type: 'SET_PLAYERS', payload: updated });
     };
+
+    const assignBuzzerToPlayer = (playerName, key) => {
+        setPlayers((prevPlayers) => {
+            const updated = prevPlayers.map((p) => {
+                if (p.name === playerName) {
+                    return { ...p, buzzerKey: key };
+                }
+                if (p.buzzerKey === key && p.name !== playerName) {
+                    return { ...p, buzzerKey: null };
+                }
+                return p;
+            });
+            channel.postMessage({ type: 'SET_PLAYERS', payload: updated });
+            if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+                ws.current.send(JSON.stringify({ type: 'SET_PLAYERS', payload: updated }));
+            }
+            return updated;
+        });
+    };
     
     const toggleDoublePoints = () => {
         const newValue = !doublePoints;
         setDoublePoints(newValue);
         channel.postMessage({ type: 'TOGGLE_DOUBLE_POINTS', payload: newValue });
     };
-
-    const unlockBuzzer = () => {
-    if (ws.current) {
-        console.log('WebSocket readyState:', ws.current.readyState);
-    }
-    if (ws.current && ws.current.readyState === WebSocket.OPEN) {
-        ws.current.send('UNLOCK_BUZZER');
-        channel.postMessage({ type: 'UNLOCK_BUZZER', payload: true });
-        console.log('UNLOCK_BUZZER message sent to server');
-    } else {
-        console.warn('WebSocket connection is not open.');
-    }
-};
 
     const generateBoard = () => {
         const grouped = {};
@@ -107,11 +127,30 @@ function AdminPanel() {
     };
 
     useEffect(() => {
+        awaitingBuzzerForRef.current = awaitingBuzzerFor;
+    }, [awaitingBuzzerFor]);
+
+    useEffect(() => {
         setBoardData(generateBoard());
 
         ws.current = new WebSocket('ws://localhost:8000'); // Adjust the URL as needed
         ws.current.onopen = () => {
             console.log('WebSocket connection established');
+        };
+        ws.current.onmessage = (event) => {
+            let data = null;
+            try {
+                data = JSON.parse(event.data);
+            } catch (e) {
+                return;
+            }
+
+            const target = awaitingBuzzerForRef.current;
+            if (data.message === 'BUTTON_PRESSED' && target) {
+                assignBuzzerToPlayer(target, data.spieler);
+                setAwaitingBuzzerFor(null);
+                channel.postMessage({ type: 'AWAITING_BUZZER_ASSIGN', payload: null });
+            }
         };
 
     
@@ -124,7 +163,9 @@ function AdminPanel() {
             } else if (type === 'TOGGLE_DOUBLE_POINTS') {
                 setDoublePoints(payload);
             } else if (type === 'RESET_PLAYER_POINTS') {
-                setPlayers((prevPlayers) => prevPlayers.map(p => ({ ...p, points: 0, joker: true })));
+                setPlayers((prevPlayers) =>
+                    prevPlayers.map((p) => ({ ...p, points: 0, joker: true }))
+                );
             } else if (type === 'NEW_BOARD_DATA') {
                 setBoardData(payload);
                 setUsedQuestions([]);
@@ -185,6 +226,29 @@ function AdminPanel() {
                                 >
                                     Entfernen
                                 </button>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <span className="text-sm">
+                                    Buzzer: {p.buzzerKey ? p.buzzerKey : 'nicht gesetzt'}
+                                </span>
+                                <button
+                                    onClick={() => {
+                                        setAwaitingBuzzerFor(p.name);
+                                        channel.postMessage({ type: 'AWAITING_BUZZER_ASSIGN', payload: p.name });
+                                        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
+                                            ws.current.send(JSON.stringify({ type: 'ARM_BUZZER_ASSIGN' }));
+                                        }
+                                    }}
+                                    className="bg-indigo-600 text-white px-3 py-1 rounded"
+                                >
+                                    Buzzer zuordnen
+                                </button>
+                                {awaitingBuzzerFor === p.name && (
+                                    <span className="text-sm text-indigo-600">
+                                        Drücke jetzt den Buzzer
+                                    </span>
+                                )}
                             </div>
 
                             <div className="flex items-center gap-4">
@@ -259,15 +323,6 @@ function AdminPanel() {
                 </button>
             </div>
 
-            {/*Buzzer freigeben */}
-            <div className="mt-6">
-                <button
-                    onClick={unlockBuzzer}
-                    className="bg-yellow-500 hover:bg-yellow-600 px-6 py-2 rounded text-white font-semibold shadow"
-                >
-                    Buzzer freigeben
-                </button>
-            </div>
             {/* Fragenraster mit Frage + Antwort + Senden-Button */}
             <div className="grid grid-cols-7 gap-4 mt-8">
                 {boardData.map((cat) => (

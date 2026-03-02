@@ -7,6 +7,9 @@ HOST = "127.0.0.1"
 PORT = 8000
 
 clients = set()
+buzzer_open = False
+assign_mode = False
+allowed_buttons = set()
 
 
 async def broadcast(message):
@@ -23,6 +26,8 @@ async def broadcast(message):
 
 
 async def handle_message(raw):
+    global buzzer_open
+    global assign_mode
 
     try:
         data = json.loads(raw)
@@ -30,18 +35,34 @@ async def handle_message(raw):
         data = None
 
     if isinstance(data, dict) and "button" in data:
-        message = json.dumps(
-            {"message": "BUTTON_PRESSED", "spieler": data["button"]}
-        )
-        await broadcast(message)
-        return
-
-    if raw == "UNLOCK_BUZZER":
-        message = json.dumps({"type": "UNLOCK_BUZZER", "payload": True})
-        await broadcast(message)
+        button = str(data["button"])
+        if buzzer_open and (assign_mode or not allowed_buttons or button in allowed_buttons):
+            buzzer_open = False
+            assign_mode = False
+            message = json.dumps(
+                {"message": "BUTTON_PRESSED", "spieler": button}
+            )
+            await broadcast(message)
         return
 
     if isinstance(data, dict) and "type" in data:
+        msg_type = data.get("type")
+        if msg_type in {"SHOW_QUESTION", "START_TIMER"}:
+            buzzer_open = True
+            assign_mode = False
+        elif msg_type == "ARM_BUZZER_ASSIGN":
+            buzzer_open = True
+            assign_mode = True
+        elif msg_type in {"RESET_GAME", "RESET_QUESTION_COUNT", "TIMER_OVER"}:
+            buzzer_open = False
+            assign_mode = False
+        elif msg_type == "SET_PLAYERS":
+            payload = data.get("payload") or []
+            allowed_buttons.clear()
+            for p in payload:
+                key = p.get("buzzerKey")
+                if key is not None and key != "":
+                    allowed_buttons.add(str(key))
         await broadcast(json.dumps(data))
         return
 
