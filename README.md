@@ -1,7 +1,7 @@
 # NerdQuiz (Anwender-Guide)
 
 
-NerdQuiz ist ein Quiz, welches an das Nerdquiz von den Rocketbeans angelehnt ist.
+NerdQuiz ist ein Quiz, das vom Rocketbeans‑Nerdquiz inspiriert ist.
 
 
 ## Voraussetzungen
@@ -11,7 +11,7 @@ NerdQuiz ist ein Quiz, welches an das Nerdquiz von den Rocketbeans angelehnt ist
 
 
 ## So startest du alles (lokal)
-Bitte vorher in der main.py die Liste in `ALLOWED_SCAN_CODES = set()``` leeren und prüfen, welche Scan-Codes die Buzzer haben
+Bitte vorher in der main.py die Liste in `ALLOWED_SCAN_CODES = set()` leeren und prüfen, welche Scan-Codes die Buzzer haben
 (im Terminal geloggt). Im Anschluss die Scan-Codes in die Liste einfügen (z.B. `ALLOWED_SCAN_CODES = set([1,2,3]`).
 
 Danach einmalig vorher:
