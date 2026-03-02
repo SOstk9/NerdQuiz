@@ -5,7 +5,7 @@ function TimerOverlay({ onTimeOver }) {
 
     useEffect(() => {
         if (timeLeft === 0) {
-            onTimeOver(); // <- Keine BroadcastChannel-Nutzung hier!
+            onTimeOver();
             return;
         }
 

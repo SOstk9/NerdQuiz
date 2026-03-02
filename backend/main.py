@@ -1,11 +1,12 @@
 import asyncio
-import keyboard  # für Tastendruck-Events
+import keyboard
 import websockets
 import json
 
-WS_URI = 'ws://dein-websocket-server:port'  # Hier WebSocket-URL anpassen
+WS_URI = 'ws://localhost:8000'
 
 pressed = False
+
 
 async def send_button(button):
     async with websockets.connect(WS_URI) as websocket:
@@ -13,22 +14,24 @@ async def send_button(button):
         await websocket.send(msg)
         print(f"Gesendet: {msg}")
 
+
 def on_key_event(event):
     global pressed
     if pressed:
-        print(f"Ignoriere weiteren Tastendruck: {event.name}")
+        print(f"Ignoriere weitere Buzzer: {event.name}")
         return
 
     if event.event_type == 'down':
         print(f"Taste gedrückt: {event.name}")
         pressed = True
-        # WebSocket Nachricht senden (async muss in Thread oder Loop)
         asyncio.run(send_button(event.name))
 
+
 def main():
-    print("Warte auf Tastendruck (USB Encoder Buttons)...")
+    print("Warte auf Buzzerdruck...")
     keyboard.hook(on_key_event)
-    keyboard.wait()  # blockiert und hört auf Tastendrücke
+    keyboard.wait()
+
 
 if __name__ == "__main__":
     main()

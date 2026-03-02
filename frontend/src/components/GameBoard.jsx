@@ -13,7 +13,7 @@ function GameBoard() {
     const [players, setPlayers] = useState([]);
     const [buzzerReset, setBuzzerReset] = useState(false);
     const [doublePoints, setDoublePoints] = useState(false);
-const [timeLeft, setTimeLeft] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(0);
 
     const audioRef = useRef(null);
     const buzzerSoundRef = useRef(new Audio('/sounds/buzzer.mp3'));
@@ -47,7 +47,7 @@ const [timeLeft, setTimeLeft] = useState(0);
 
     useEffect(() => {
         setBoardData(generateBoard());
-        
+
         const ws = new WebSocket('ws://localhost:8000');
         ws.onmessage = (event) => {
             console.log('WebSocket message received:', event.data);
@@ -56,37 +56,37 @@ const [timeLeft, setTimeLeft] = useState(0);
                 buzzerSoundRef.current.play();
                 setPlayerGuess(data.spieler);
                 setVisibleQuestion(null);
-                                setShowTimer(false);
-                                if (audioRef.current) {
-                                    audioRef.current.pause();
-                                    audioRef.current.currentTime = 0;
-                                }
-                                setIsPlaying(false);
-                                setProgress(0);
-                            }  
+                setShowTimer(false);
+                if (audioRef.current) {
+                    audioRef.current.pause();
+                    audioRef.current.currentTime = 0;
+                }
+                setIsPlaying(false);
+                setProgress(0);
+            }
         }
         const handleMessage = (event) => {
             const { type, payload } = event.data;
 
             if (type === 'SHOW_QUESTION') {
- 
+
 
                 setVisibleQuestion(payload);
                 setUsedQuestions((prev) => [...prev, payload.id]);
                 setShowTimer(true);
                 setIsPlaying(false);
                 setProgress(0);
-            } 
-             else if (type === 'TIMER_OVER') {
-            setVisibleQuestion(null);
-            setShowTimer(false);
-            if (audioRef.current) {
-                                    audioRef.current.pause();
-                                    audioRef.current.currentTime = 0;
-                                }
-                                setIsPlaying(false);
-                                setProgress(0);
-            }else if (type === 'SET_PLAYERS') {
+            }
+            else if (type === 'TIMER_OVER') {
+                setVisibleQuestion(null);
+                setShowTimer(false);
+                if (audioRef.current) {
+                    audioRef.current.pause();
+                    audioRef.current.currentTime = 0;
+                }
+                setIsPlaying(false);
+                setProgress(0);
+            } else if (type === 'SET_PLAYERS') {
                 setPlayers(payload);
             } else if (type === 'TOGGLE_DOUBLE_POINTS') {
                 setDoublePoints(payload);
@@ -117,10 +117,11 @@ const [timeLeft, setTimeLeft] = useState(0);
                 setProgress(0);
             }
             else if (type === 'UNLOCK_BUZZER') {
-    setBuzzerReset(payload);
-    // Optional: Status nach 5 Sekunden zurücksetzen, damit die Anzeige wieder verschwindet
-    setTimeout(() => setBuzzerReset(false), 5000);
-}
+                setBuzzerReset(payload);
+
+
+                setTimeout(() => setBuzzerReset(false), 5000);
+            }
         };
 
         channel.addEventListener('message', handleMessage);
@@ -131,24 +132,24 @@ const [timeLeft, setTimeLeft] = useState(0);
     }, []);
 
     useEffect(() => {
-       let countdownInterval;
-    if (playerGuess) {
-        setTimeLeft(5); // Startzeit
+        let countdownInterval;
+        if (playerGuess) {
+            setTimeLeft(5); // Startzeit
 
-        countdownInterval = setInterval(() => {
-            setTimeLeft((prev) => {
-                if (prev <= 1) {
-                    clearInterval(countdownInterval);
-                    setPlayerGuess(null);
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-    }
+            countdownInterval = setInterval(() => {
+                setTimeLeft((prev) => {
+                    if (prev <= 1) {
+                        clearInterval(countdownInterval);
+                        setPlayerGuess(null);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
 
-    return () => clearInterval(countdownInterval);
-}, [playerGuess]);
+        return () => clearInterval(countdownInterval);
+    }, [playerGuess]);
 
     // Update progress as audio plays
     useEffect(() => {
@@ -240,10 +241,10 @@ const [timeLeft, setTimeLeft] = useState(0);
                     ))}
                 </div>
                 {buzzerReset && (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50">
-        Buzzer wurde zurückgesetzt!
-    </div>
-)}
+                    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50">
+                        Buzzer wurde zurückgesetzt!
+                    </div>
+                )}
             </main>
 
             {/* Player Scores */}
@@ -378,14 +379,14 @@ const [timeLeft, setTimeLeft] = useState(0);
             )}
 
             {/* Player Guess Overlay */}
-            {playerGuess &&(
+            {playerGuess && (
                 <div
                     className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-6 z-50"
                     role="dialog"
                     aria-modal="true"
                     aria-labelledby="guess-title"
                 >
-                  
+
                     <div className="bg-gray-900 rounded-lg max-w-md w-full p-8 shadow-xl space-y-6 text-center">
                         <h2 id="guess-title" className="text-3xl font-bold tracking-wide mb-4">
                             {playerGuess}, du bist dran!
@@ -405,19 +406,19 @@ const [timeLeft, setTimeLeft] = useState(0);
 
             {/* Timer Overlay */}
             {showTimer && (
-    <TimerOverlay
-        onTimeOver={() => {
-            setVisibleQuestion(null);
-            setShowTimer(false);
-            if (audioRef.current) {
-                audioRef.current.pause();
-                audioRef.current.currentTime = 0;
-            }
-            setIsPlaying(false);
-            setProgress(0);
-        }}
-    />
-)}
+                <TimerOverlay
+                    onTimeOver={() => {
+                        setVisibleQuestion(null);
+                        setShowTimer(false);
+                        if (audioRef.current) {
+                            audioRef.current.pause();
+                            audioRef.current.currentTime = 0;
+                        }
+                        setIsPlaying(false);
+                        setProgress(0);
+                    }}
+                />
+            )}
 
         </div>
     );
