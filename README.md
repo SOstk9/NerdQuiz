@@ -11,7 +11,10 @@ NerdQuiz ist ein Quiz, welches an das Nerdquiz von den Rocketbeans angelehnt ist
 
 
 ## So startest du alles (lokal)
-Einmalig vorher:
+Bitte vorher in der main.py die Liste in `ALLOWED_SCAN_CODES = set()``` leeren und prüfen, welche Scan-Codes die Buzzer haben
+(im Terminal geloggt). Im Anschluss die Scan-Codes in die Liste einfügen (z.B. `ALLOWED_SCAN_CODES = set([1,2,3]`).
+
+Danach einmalig vorher:
 
 ```bash
 # Frontend-Abhängigkeiten
