@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import questions from '../data/questions.json';
 import TimerOverlay from './TimerOverlay';
+import { FaBackward, FaForward, FaStop, FaPlay, FaPause } from 'react-icons/fa';
 
 const channel = new BroadcastChannel('jeopardy');
 
@@ -237,7 +238,7 @@ function GameBoard() {
             {/* Game Board */}
             <main className="max-w-9xl mx-auto mb-6">
                 <div
-                    className="grid gap-4 select-none"
+                    className="grid gap-4 select-none "
                     style={{ gridTemplateColumns: 'repeat(7, 200px)' }}
                 >
                     {boardData.map(({ category, questions }) => (
@@ -332,39 +333,41 @@ function GameBoard() {
                                     onEnded={() => setIsPlaying(false)}
                                 />
                                 <div className="flex items-center justify-center space-x-4 mt-2">
-                                    <button
-                                        onClick={() => {
-                                            if (audioRef.current) {
-                                                audioRef.current.currentTime = 0;
-                                                setProgress(0);
-                                            }
-                                            handlePlayPause();
-                                        }}
-                                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded"
-                                        aria-label="Audio neu starten"
-                                    >
-                                        ⏹️
-                                    </button>
-                                    <button
-                                        onClick={handleRewind}
-                                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded"
-                                        aria-label="5 Sekunden zurückspulen"
-                                    >
-                                        ⏪
-                                    </button>
-                                    <button
-                                        onClick={handlePlayPause}
-                                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded"
-                                    >
-                                        {isPlaying ? 'Pause' : 'Play'}
-                                    </button>
-                                    <button
-                                        onClick={handleForward}
-                                        className="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1 rounded"
-                                        aria-label="5 Sekunden vorspulen"
-                                    >
-                                        ⏩
-                                    </button>
+                                    <div className="bg-indigo-600 border border-indigo-600 p-2 rounded-full flexitems-center space-x-2">
+                                        <button
+                                            onClick={() => {
+                                                if (audioRef.current) {
+                                                    audioRef.current.currentTime = 0;
+                                                    setProgress(0);
+                                                }
+                                                handlePlayPause();
+                                            }}
+                                            className="text-white px-3 py-1 rounded"
+                                            aria-label="Audio neu starten"
+                                        >
+                                            <FaStop />
+                                        </button>
+                                        <button
+                                            onClick={handleRewind}
+                                            className="text-white px-3 py-1 rounded"
+                                            aria-label="5 Sekunden zurückspulen"
+                                        >
+                                            <FaBackward />
+                                        </button>
+                                        <button
+                                            onClick={handlePlayPause}
+                                            className="text-white px-3 py-1 rounded"
+                                        >
+                                            {isPlaying ? <FaPause /> : <FaPlay />}
+                                        </button>
+                                        <button
+                                            onClick={handleForward}
+                                            className="text-white px-3 py-1 rounded"
+                                            aria-label="5 Sekunden vorspulen"
+                                        >
+                                            <FaForward />
+                                        </button>
+                                    </div>
                                 </div>
                                 <input
                                     type="range"
